@@ -2,7 +2,9 @@ import faker from 'faker';
 import { useState } from 'react';
 import SingleProduct from './SingleProduct';
 
-const Home = () => {
+faker.seed(1);
+
+const Home = ({cart, setCart}) => {
     
     const productArray = [...Array(20)].map( () => ({
         id:faker.datatype.uuid(),
@@ -15,7 +17,7 @@ const Home = () => {
     return (
         <div className = "productContainer">
             {products.map( (product) => (
-                <SingleProduct product = {product}/>
+                <SingleProduct product = {product} cart = {cart} setCart = {setCart} />
             ))};
         </div>
     );

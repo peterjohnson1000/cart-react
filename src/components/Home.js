@@ -1,10 +1,13 @@
 import faker from 'faker';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import SingleProduct from './SingleProduct';
+import CartContext from '../Context';
 
 faker.seed(1);
 
-const Home = ({cart, setCart}) => {
+const Home = () => {
+
+    const {cart, setCart} = useContext(CartContext);
     
     const productArray = [...Array(20)].map( () => ({
         id:faker.datatype.uuid(),

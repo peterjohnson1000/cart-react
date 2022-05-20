@@ -1,23 +1,23 @@
-import React, {useState} from 'react';
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import Header from './components/Header';
 import Home from './components/Home';
 import Cart from './components/Cart';
+import CartProvider  from './Provider';
 import './App.css';
 
 function App() {
 
-  const [cart, setCart] = useState([]);
-  console.log(cart);
   return (
     <BrowserRouter>
-      <div className = 'App'>
-        <Header />
-        <Routes>
-          <Route path = "/" element = { <Home cart = {cart} setCart = {setCart} /> } />
-          <Route path = "/Cart" element = { <Cart cart = {cart} setCart = {setCart} /> } />
-        </Routes>
-      </div>
+      <CartProvider>
+          <div className = 'App'>
+            <Header />
+            <Routes>
+              <Route path = "/" element = { <Home/> } />
+              <Route path = "/Cart" element = { <Cart /> } />
+            </Routes>
+          </div>
+      </CartProvider>
     </BrowserRouter>
   );
 }
